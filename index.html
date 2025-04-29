@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="HIL: Hybrid Imitation Learning of Diverse Parkour Skills from Videos">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HIL</title>
+
+  
+  <style>
+  .hr {width: 100%; height: 1px; margin: 48px 0; background-color: #d6dbdf;}
+  </style>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" type="image/png" href="static/images/UCSD_icon.png"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <!-- <script src="./static/js/bulma-slider.min.js"></script> -->
+  <script src="./static/js/index.js"></script>
+
+
+  <script type="text/javascript" async
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+	<script type="text/javascript">
+		function toggle(id) {
+			var e = document.getElementById(id);
+			if(e.style.display == 'block')
+				e.style.display = 'none';
+			else
+				e.style.display = 'block';
+		}
+	</script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">HIL: Hybrid Imitation Learning of Diverse Parkour Skills from Videos</h1>
+          <!-- <h1 class="title is-3 publication-title"></h1> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://jiashunwang.github.io/">Jiashun Wang</a><sup>1</sup></span>
+            <span class="author-block"></span>
+            <span class="author-block">
+              <a href="https://cs.stanford.edu/~yifengj/">Yifeng Jiang</a><sup>2</sup></span>
+            <span class="author-block"></span>
+            <span class="author-block">
+              <a href="https://cs.stanford.edu/~haotianz/">Haotian Zhang</a><sup>2</sup></span>
+            <span class="author-block"></span>
+            <span class="author-block">
+              <a href="http://chen.tessler.tilda.ws/">Chen Tessler</a><sup>2</sup></span>
+            <span class="author-block"></span>
+            <span class="author-block">
+              <a href="https://davrempe.github.io/">Davis Rempe</a><sup>2</sup></span>
+            <span class="author-block"></span>
+            <span class="author-block">
+              <a href="https://www.cs.cmu.edu/~jkh/">Jessica Hodgins</a><sup>1</sup></span>
+            <span class="author-block"></span>
+            <span class="author-block">
+              <a href="https://xbpeng.github.io/">Xue Bin Peng</a><sup>2,3</sup></span>
+            <span class="author-block"></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Carnegie Mellon Universty</span>
+            <span class="author-block"><sup>2</sup>NVIDIA</span>
+            <span class="author-block"><sup>3</sup>Simon Fraser University</span>
+          </div>
+          <!-- <div class="is-size-6 publication-authors">
+            <span class="author-block">(* the work was done at an internship at The AI Institute)</span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              
+              <span class="link-block">
+                <a href=""
+                class="external-link button is-normal is-rounded is-dark" target="_blank">
+                <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                </span>
+                <span>Paper</span>
+              </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span> -->
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+  <div align="center">
+    <video autoplay loop playsinline controls width="60%">
+      <source src="./static/mat/main_video.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent data-driven methods leveraging deep reinforcement learning have been an effective paradigm for developing controllers that enable physically simulated characters to produce natural human-like behaviors. However, these data-driven methods often struggle to adapt to novel environments and compose diverse skills coherently to perform more complex tasks. To address these challenges, we propose a hybrid imitation learning (HIL) framework that combines motion tracking, for precise skill replication, with adversarial imitation learning, to enhance adaptability and skill composition. This hybrid learning framework is implemented through parallel multi-task environments and a unified observation space, featuring an agent-centric scene representation to facilitate effective learning from the hybrid parallel environments. Our framework trains a unified controller on parkour data sourced from Internet videos, enabling a simulated character to traverse through new environments using diverse and life-like parkour skills. Evaluations across challenging environments demonstrate that our method improves motion quality, increases skill diversity, and achieves competitive task completion compared to previous learning-based methods.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="hr"></div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-3">A unified controller capable of performing diverse parkour skills across challenging obstacle courses.</h3>
+            <div style="padding: 12px;"></div>
+            <div class="columns is-centered">              
+                <video id="dollyzoom" autoplay playsinline controls muted loop width="90%">
+                  <source src="static/mat/result.mp4"
+                          type="video/mp4">
+                </video>
+            </div>
+    
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="hr"></div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-3">A controller capable of performing both dynamic parkour stunts and everyday interactions such as sitting on a chair.</h3>
+            <div style="padding: 12px;"></div>
+            <div class="columns is-centered">              
+                <video id="dollyzoom" autoplay playsinline controls muted loop width="90%">
+                  <source src="static/mat/generalization.mp4"
+                          type="video/mp4">
+                </video>
+            </div>
+    
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="hr"></div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-3">Comparison</h3>
+            <div style="padding: 12px;"></div>
+            <div class="columns is-centered">              
+                <video id="dollyzoom" autoplay playsinline controls muted loop width="100%">
+                  <source src="static/mat/compare1.mp4"
+                          type="video/mp4">
+                </video>
+            </div>
+            <div class="columns is-centered">              
+              <video id="dollyzoom" autoplay playsinline controls muted loop width="100%">
+                <source src="static/mat/compare2.mp4"
+                        type="video/mp4">
+              </video>
+          </div>
+    
+      </div>
+    </div>
+  </div>
+  <!-- <div class="container is-max-desktop">
+    <div class="hr"></div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-3">Comparison</h3>
+            <div style="padding: 12px;"></div>
+            <div class="columns is-centered">              
+                <video id="dollyzoom" autoplay playsinline controls muted loop width="100%">
+                  <source src="static/mat/compare2.mp4"
+                          type="video/mp4">
+                </video>
+            </div>
+    
+      </div>
+    </div>
+  </div> -->
+  <div class="container is-max-desktop">
+    <div class="hr"></div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-3">Ablation</h3>
+            <div style="padding: 12px;"></div>
+            <div class="columns is-centered">              
+                <video id="dollyzoom" autoplay playsinline controls muted loop width="100%">
+                  <source src="static/mat/ablation1.mp4"
+                          type="video/mp4">
+                </video>
+            </div>
+            <div class="columns is-centered">              
+                <video id="dollyzoom" autoplay playsinline controls muted loop width="100%">
+                  <source src="static/mat/ablation2.mp4"
+                          type="video/mp4">
+                </video>
+            </div>
+            <div class="columns is-centered">              
+                <video id="dollyzoom" autoplay playsinline controls muted loop width="100%">
+                  <source src="static/mat/ablation3.mp4"
+                          type="video/mp4">
+                </video>
+            </div>
+    
+      </div>
+    </div>
+  </div>
+
+  <div class="container is-max-desktop">
+    <div class="hr"></div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-3">Robustness</h3>
+            <div style="padding: 12px;"></div>
+            <div class="columns is-centered">              
+                <video id="dollyzoom" autoplay playsinline controls muted loop width="100%">
+                  <source src="static/mat/robust1.mp4"
+                          type="video/mp4">
+                </video>
+            </div>
+            <div style="padding: 12px;"></div>
+            <div class="columns is-centered">              
+                <video id="dollyzoom" autoplay playsinline controls muted loop width="100%">
+                  <source src="static/mat/robust2.mp4"
+                          type="video/mp4">
+                </video>
+            </div>   
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code>@inproceedings{wang2024strategy,
+      title={{HIL:} Hybrid Imitation Learning of Diverse Parkour Skills from Videos},
+      author={Wang, Jiashun and Jiang, Yifeng and Zhang, Haotian and Tessler, Chen and Rempe, Davis and Hodgins, Jessica and Peng, Xue Bin},
+      booktitle={},
+      year={2025}
+    }
+</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website template is borrowed from
+            <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
