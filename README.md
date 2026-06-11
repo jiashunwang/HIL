@@ -1,2 +1,2 @@
 # HIL
-HIL: Hybrid Imitation Learning of Diverse Parkour Skills
+HIL: Hybrid Imitation Learning for Dynamic Athletic Control. ACM Transactions on Graphics (TOG).
