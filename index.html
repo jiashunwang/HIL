@@ -51,34 +51,32 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-2 publication-title">HIL: Hybrid Imitation Learning of Diverse Parkour Skills from Videos</h1>
+          <h1 class="title publication-title">
+            HIL: Hybrid Imitation Learning for<br>
+            <span>Dynamic Athletic Control</span>
+          </h1>
+          <div class="publication-venue">ACM Transactions on Graphics (TOG)</div>
           <!-- <h1 class="title is-3 publication-title"></h1> -->
-          <div class="is-size-5 publication-authors">
+          <div class="publication-authors author-list">
             <span class="author-block">
               <a href="https://jiashunwang.github.io/">Jiashun Wang</a><sup>1</sup></span>
-            <span class="author-block"></span>
             <span class="author-block">
               <a href="https://cs.stanford.edu/~yifengj/">Yifeng Jiang</a><sup>2</sup></span>
-            <span class="author-block"></span>
             <span class="author-block">
               <a href="https://cs.stanford.edu/~haotianz/">Haotian Zhang</a><sup>2</sup></span>
-            <span class="author-block"></span>
             <span class="author-block">
               <a href="http://chen.tessler.tilda.ws/">Chen Tessler</a><sup>2</sup></span>
-            <span class="author-block"></span>
+            <br class="author-break">
             <span class="author-block">
               <a href="https://davrempe.github.io/">Davis Rempe</a><sup>2</sup></span>
-            <span class="author-block"></span>
             <span class="author-block">
               <a href="https://www.cs.cmu.edu/~jkh/">Jessica Hodgins</a><sup>1</sup></span>
-            <span class="author-block"></span>
             <span class="author-block">
               <a href="https://xbpeng.github.io/">Xue Bin Peng</a><sup>2,3</sup></span>
-            <span class="author-block"></span>
           </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Carnegie Mellon Universty</span>
+          <div class="publication-authors publication-affiliations">
+            <span class="author-block"><sup>1</sup>Carnegie Mellon University</span>
             <span class="author-block"><sup>2</sup>NVIDIA</span>
             <span class="author-block"><sup>3</sup>Simon Fraser University</span>
           </div>
@@ -86,15 +84,15 @@
             <span class="author-block">(* the work was done at an internship at The AI Institute)</span>
           </div> -->
 
-          <div class="column has-text-centered">
+          <div class="publication-link-row has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               
               <span class="link-block">
-                <a href=""
+                <a href="static/mat/Hybrid_Imitation_Learning_TOG.pdf"
                 class="external-link button is-normal is-rounded is-dark" target="_blank">
                 <span class="icon">
-                    <i class="ai ai-arxiv"></i>
+                    <i class="fas fa-file-pdf"></i>
                 </span>
                 <span>Paper</span>
               </a>
@@ -136,7 +134,10 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Recent data-driven methods leveraging deep reinforcement learning have been an effective paradigm for developing controllers that enable physically simulated characters to produce natural human-like behaviors. However, these data-driven methods often struggle to adapt to novel environments and compose diverse skills coherently to perform more complex tasks. To address these challenges, we propose a hybrid imitation learning (HIL) framework that combines motion tracking, for precise skill replication, with adversarial imitation learning, to enhance adaptability and skill composition. This hybrid learning framework is implemented through parallel multi-task environments and a unified observation space, featuring an agent-centric scene representation to facilitate effective learning from the hybrid parallel environments. Our framework trains a unified controller on parkour data sourced from Internet videos, enabling a simulated character to traverse through new environments using diverse and life-like parkour skills. Evaluations across challenging environments demonstrate that our method improves motion quality, increases skill diversity, and achieves competitive task completion compared to previous learning-based methods.
+            Data-driven methods leveraging deep reinforcement learning have become the dominant paradigm for developing controllers that enable physically simulated characters to produce natural human-like behaviors. 
+            However, these data-driven methods often struggle to adapt to novel environments and compose diverse skills to perform more complex interaction tasks with the environment. 
+            To address these challenges, we propose a hybrid imitation learning (HIL) framework that combines motion tracking, for precise skill replication, with adversarial imitation learning, to enhance adaptability and skill composition, enabling robust dynamic control for highly athletic behaviors. This hybrid learning framework is implemented through parallel multi-task environments and a unified observation space, utilizing a goal-conditioned representation to facilitate knowledge-sharing across the hybrid parallel environments. 
+            We demonstrate the effectiveness of HIL on a parkour-style obstacle traversal task and a heading control task. Our framework enables a unified controller that not only preserves the naturalness of reference motion data, but also generalizes effectively to challenging new environments. Evaluations across procedurally generated tasks and baselines show that our method improves motion quality, increases skill diversity, and achieves competitive task completion compared to previous learning-based approaches.
           </p>
         </div>
       </div>
@@ -272,8 +273,8 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title is-3">BibTeX</h2>
-    <pre><code>@inproceedings{wang2024strategy,
-      title={{HIL:} Hybrid Imitation Learning of Diverse Parkour Skills from Videos},
+    <pre><code>@inproceedings{wang2025hil,
+      title={{HIL:} Hybrid Imitation Learning for Dynamic Athletic Control},
       author={Wang, Jiashun and Jiang, Yifeng and Zhang, Haotian and Tessler, Chen and Rempe, Davis and Hodgins, Jessica and Peng, Xue Bin},
       booktitle={},
       year={2025}
